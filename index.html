@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ram Barath M — Issue #1</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bangers&family=Comic+Neue:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#081029;--bg2:#0d1b4a;--ink:#030719;--panel:rgba(16,36,98,.55);--line:#2f7dff;
+  --blue:#2f7dff;--cy:#3df2ff;--tx:#fff;--mute:#b9c8f5;--dot:rgba(61,242,255,.16);--sh:#030719;--glow:0 0 22px rgba(47,125,255,.55);
+  --fh:'Bangers',Impact,sans-serif;--fb:'Comic Neue','Comic Sans MS',cursive,sans-serif;
+  --ease:cubic-bezier(.2,.9,.25,1.2);
+}
+[data-theme=light]{
+  --bg:#eaf1ff;--bg2:#d6e4ff;--ink:#081029;--panel:#fff;--line:#081029;--blue:#1f55ff;--cy:#0a86c9;
+  --tx:#081029;--mute:#3a4a7a;--dot:rgba(31,85,255,.18);--sh:#1f55ff;--glow:none;
+}
+*{box-sizing:border-box;margin:0}
+html{scroll-behavior:smooth}
+body{font-family:var(--fb);font-size:1.1rem;line-height:1.6;color:var(--tx);background:var(--bg);overflow-x:hidden;transition:background .5s,color .5s;
+  background-image:radial-gradient(ellipse 70% 40% at 80% 0,rgba(47,125,255,.35),transparent 70%),radial-gradient(ellipse 60% 35% at 0 60%,rgba(61,242,255,.12),transparent 70%)}
+[data-theme=light] body{background-image:none}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;z-index:0;
+  background:radial-gradient(var(--dot) 1.6px,transparent 2px) 0 0/10px 10px;
+  -webkit-mask:linear-gradient(115deg,#000 0,transparent 45%,transparent 70%,#000);mask:linear-gradient(115deg,#000 0,transparent 45%,transparent 70%,#000)}
+main,header,footer{position:relative;z-index:1}
+a{color:inherit}
+:focus-visible{outline:3px dashed var(--cy);outline-offset:3px}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:var(--fh);font-weight:400;letter-spacing:.03em;line-height:.95}
+h2{font-size:clamp(2.6rem,9vw,4.6rem);transform:rotate(-2deg);display:inline-block;color:#fff;background:var(--blue);padding:.1em .3em;border:3px solid var(--ink);box-shadow:5px 5px 0 var(--ink);margin-bottom:28px}
+[data-theme=light] h2{box-shadow:5px 5px 0 var(--ink)}
+section{padding:72px 0}
+
+/* panels */
+.panel{position:relative;border:3px solid var(--line);background:var(--panel);box-shadow:7px 7px 0 var(--sh),var(--glow);padding:22px;border-radius:3px}
+[data-theme=dark] .panel{-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+.panel::after{content:"";position:absolute;inset:0;pointer-events:none;background:radial-gradient(var(--dot) 1.4px,transparent 1.8px) 0 0/8px 8px;-webkit-mask:linear-gradient(200deg,#000,transparent 40%);mask:linear-gradient(200deg,#000,transparent 40%)}
+.cap{display:inline-block;font-family:var(--fh);font-size:1.15rem;letter-spacing:.06em;background:#ffe14d;color:#081029;border:2px solid #081029;padding:2px 10px;margin:-34px 0 12px -10px;transform:rotate(-2deg)}
+
+/* top bar */
+header{padding:14px 0}
+header .wrap{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.issue{font-family:var(--fh);font-size:1.2rem;letter-spacing:.08em}
+.toggle{font-family:var(--fh);font-size:1.1rem;letter-spacing:.05em;color:var(--tx);background:var(--panel);border:3px solid var(--line);box-shadow:4px 4px 0 var(--sh);padding:6px 14px;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.toggle:active{transform:translate(3px,3px);box-shadow:1px 1px 0 var(--sh)}
+
+/* hero */
+.hero{padding:30px 0 70px;min-height:82vh;display:flex;align-items:center}
+.hero .wrap{display:grid;gap:28px;width:100%}
+@media(min-width:820px){.hero .wrap{grid-template-columns:1.5fr 1fr;align-items:center}}
+.name{font-size:clamp(4.2rem,22vw,10.5rem);transform:skew(-4deg) rotate(-2deg);text-transform:uppercase;
+  text-shadow:4px 4px 0 var(--blue),8px 8px 0 var(--ink)}
+[data-theme=dark] .name{text-shadow:4px 4px 0 var(--blue),8px 8px 0 var(--ink),0 0 40px rgba(61,242,255,.45)}
+.name span{display:block}
+.name .m{font-size:.55em;color:var(--cy);margin-top:.12em;text-shadow:3px 3px 0 var(--ink)}
+.bubble{position:relative;margin-top:30px;max-width:30ch;background:#fff;color:#081029;border:3px solid #081029;border-radius:22px;padding:14px 18px;font-weight:700;box-shadow:5px 5px 0 var(--blue)}
+.bubble::before{content:"";position:absolute;left:34px;top:-22px;border:12px solid transparent;border-bottom:12px solid #081029;border-top:0;width:0}
+.bubble::after{content:"";position:absolute;left:37px;top:-15px;border:9px solid transparent;border-bottom:10px solid #fff;border-top:0}
+.now{margin-top:20px;color:var(--mute)}
+.now b{color:var(--cy);font-family:var(--fh);font-weight:400;letter-spacing:.06em;font-size:1.25rem}
+.btns{display:flex;flex-wrap:wrap;gap:14px;margin-top:26px}
+.btn{font-family:var(--fh);font-size:1.5rem;letter-spacing:.06em;text-decoration:none;border:3px solid var(--ink);padding:8px 24px;box-shadow:5px 5px 0 var(--ink);transition:transform .15s var(--ease),box-shadow .15s;display:inline-block}
+.btn:hover{transform:translate(-2px,-2px) rotate(-1deg);box-shadow:8px 8px 0 var(--ink)}
+.btn:active{transform:translate(4px,4px);box-shadow:1px 1px 0 var(--ink)}
+.b1{background:var(--cy);color:#081029}.b2{background:#fff;color:#081029}
+.mono{justify-self:center;background:none;border:0;cursor:pointer;width:min(72vw,320px);color:inherit;padding:0}
+.mono svg{width:100%;height:auto;overflow:visible;filter:drop-shadow(0 0 18px rgba(47,125,255,.6))}
+[data-theme=light] .mono svg{filter:none}
+.mono:active svg{transform:scale(.96)}
+.mono svg{transition:transform .2s var(--ease)}
+
+/* about */
+.about{display:grid;gap:30px}
+@media(min-width:820px){.about{grid-template-columns:1fr 1.25fr;align-items:start}.about .panel:first-child{transform:rotate(-1.2deg)}.about .panel:last-child{margin-top:40px}}
+.about p+p{margin-top:1em}
+.big{font-family:var(--fh);font-size:clamp(1.8rem,5vw,2.6rem);line-height:1.05}
+
+/* skills */
+.tiers{display:grid;gap:34px 22px}
+@media(min-width:760px){.tiers{grid-template-columns:repeat(3,1fr)}.tiers .panel:nth-child(2){margin-top:34px}.tiers .panel:nth-child(3){margin-top:12px}}
+.tiers h3{font-size:2rem;margin-bottom:12px;color:var(--cy)}
+.tags{display:flex;flex-wrap:wrap;gap:10px;list-style:none;padding:0;position:relative;z-index:1}
+.tags li{font-weight:700;border:2px solid var(--line);padding:3px 12px;background:var(--bg);border-radius:2px;transform:rotate(var(--r,0deg))}
+.tags li:nth-child(odd){--r:-1.5deg}.tags li:nth-child(even){--r:1.2deg}
+.note{margin-top:12px;color:var(--mute);font-size:1rem}
+
+/* journey: uneven comic grid */
+.grid{display:grid;gap:34px 22px}
+@media(min-width:820px){.grid{grid-template-columns:repeat(6,1fr)}.j1{grid-column:1/4}.j2{grid-column:4/7;margin-top:36px}.j3{grid-column:2/7}}
+.panel ul{padding-left:1.1em;position:relative;z-index:1}.panel li{margin:.4em 0}
+.sfx{position:absolute;right:-8px;top:-24px;font-family:var(--fh);font-size:1.7rem;background:var(--cy);color:#081029;padding:0 12px;border:3px solid var(--ink);transform:rotate(6deg);z-index:2}
+
+/* beyond */
+.bubbles{display:flex;flex-wrap:wrap;gap:26px 20px}
+.bubbles .bubble{margin:0;max-width:26ch;font-weight:400}
+.bubbles .bubble:nth-child(2){transform:rotate(2deg)}.bubbles .bubble:nth-child(3){transform:rotate(-2deg);margin-top:14px}
+.bubbles .bubble::before,.bubbles .bubble::after{left:auto}
+.bubbles .bubble::before{right:34px;top:auto;bottom:-22px;border:12px solid transparent;border-top:12px solid #081029;border-bottom:0}
+.bubbles .bubble::after{right:37px;top:auto;bottom:-15px;border:9px solid transparent;border-top:10px solid #fff;border-bottom:0}
+.bubbles .bubble:nth-child(even)::before,.bubbles .bubble:nth-child(even)::after{right:auto}
+.bubbles .bubble:nth-child(even)::before{left:34px}.bubbles .bubble:nth-child(even)::after{left:37px}
+
+/* contact */
+.contact{text-align:left}
+.contact .big{font-size:clamp(2.4rem,8vw,5rem);margin-bottom:18px}
+.links{display:grid;gap:14px;margin-top:22px;position:relative;z-index:1}
+@media(min-width:700px){.links{grid-template-columns:repeat(3,1fr)}}
+.links a{display:block;text-decoration:none;font-weight:700;border:3px solid var(--line);background:var(--bg);padding:12px 16px;box-shadow:4px 4px 0 var(--sh);transition:transform .15s var(--ease),background .2s,color .2s;overflow-wrap:anywhere}
+.links a small{display:block;font-family:var(--fh);font-weight:400;font-size:1.3rem;letter-spacing:.06em;color:var(--cy)}
+.links a:hover{transform:translate(-2px,-2px) rotate(-1deg);background:var(--blue);color:#fff}
+.links a:hover small{color:#fff}
+footer{padding:30px 0 60px;color:var(--mute);font-size:.95rem}
+
+/* reveal: panels "pop" into place */
+.js .pop{opacity:0;transform:scale(.94) translateY(16px)}
+.js .pop.in{opacity:1;transform:none;transition:opacity .45s,transform .55s var(--ease)}
+
+/* particles */
+#parts{position:fixed;inset:0;z-index:0;pointer-events:none;overflow:hidden}
+#parts i{position:absolute;bottom:-10px;width:4px;height:4px;border-radius:50%;background:var(--cy);opacity:.5;box-shadow:0 0 8px var(--cy);animation:rise linear infinite}
+#parts i.t{width:2px;height:34px;border-radius:2px;background:linear-gradient(var(--cy),transparent);box-shadow:none;opacity:.35}
+[data-theme=light] #parts i{background:var(--blue);box-shadow:none;opacity:.25}
+@keyframes rise{to{transform:translateY(-115vh)}}
+
+/* opening */
+#open{position:fixed;inset:0;z-index:100;background:var(--bg);display:grid;place-items:center;overflow:hidden;transition:opacity .35s,visibility .35s}
+#open::before{content:"";position:absolute;inset:0;background:radial-gradient(var(--dot) 2px,transparent 2.5px) 0 0/12px 12px}
+#open.gone{opacity:0;visibility:hidden}
+.skip{position:absolute;right:16px;bottom:16px;z-index:3;font-family:var(--fh);font-size:1.1rem;letter-spacing:.06em;background:#fff;color:#081029;border:3px solid #081029;box-shadow:3px 3px 0 var(--blue);padding:4px 14px;cursor:pointer}
+.stampwrap{position:relative;z-index:2;text-align:center;padding:0 12px}
+.big-stamp{font-family:var(--fh);font-size:clamp(3rem,15vw,8rem);line-height:.9;text-transform:uppercase;color:var(--cy);border:.1em solid var(--cy);padding:.08em .25em;display:inline-block;transform:rotate(-6deg) scale(4);opacity:0;mix-blend-mode:normal;
+  text-shadow:0 0 24px rgba(61,242,255,.6);box-shadow:0 0 30px rgba(61,242,255,.4),inset 0 0 20px rgba(61,242,255,.25);animation:thump .45s .75s cubic-bezier(.5,0,.9,.4) forwards}
+.big-stamp small{display:block;font-size:.3em;color:#fff;letter-spacing:.2em}
+@keyframes thump{0%{transform:rotate(-6deg) scale(4);opacity:0}60%{opacity:1}100%{transform:rotate(-6deg) scale(1);opacity:1}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:1;animation:flash .35s 1.15s ease-out}
+@keyframes flash{0%{opacity:.85}100%{opacity:0}}
+#open .sfx2{position:absolute;z-index:2;font-family:var(--fh);font-size:clamp(2rem,9vw,4rem);color:#ffe14d;left:50%;top:18%;transform:translateX(-50%) rotate(-8deg) scale(0);animation:bam .3s 1.15s var(--ease) forwards;text-shadow:3px 3px 0 var(--ink)}
+@keyframes bam{to{transform:translateX(-50%) rotate(-8deg) scale(1)}}
+body.shake{animation:shake .3s}
+@keyframes shake{20%{transform:translate(-6px,4px)}40%{transform:translate(5px,-5px)}60%{transform:translate(-4px,-2px)}80%{transform:translate(3px,3px)}}
+
+/* click stamps (signature move) */
+.ink{position:fixed;z-index:60;pointer-events:none;font-family:var(--fh);font-size:2rem;letter-spacing:.06em;color:var(--cy);border:4px solid var(--cy);padding:0 12px;transform:translate(-50%,-50%) rotate(var(--r)) scale(3);opacity:0;animation:inkin .35s cubic-bezier(.5,0,.9,.4) forwards,inkout .6s 2.2s forwards}
+[data-theme=light] .ink{color:#c4161c;border-color:#c4161c}
+@keyframes inkin{to{transform:translate(-50%,-50%) rotate(var(--r)) scale(1);opacity:.9}}
+@keyframes inkout{to{opacity:0}}
+
+/* easter egg */
+#egg{position:fixed;inset:0;z-index:90;display:none;place-items:center;background:rgba(3,7,25,.8);padding:20px}
+#egg.show{display:grid}
+#egg .panel{max-width:440px;background:var(--bg2);animation:thump2 .4s var(--ease)}
+@keyframes thump2{from{transform:scale(.4) rotate(-8deg)}}
+
+@media (prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-delay:0s!important;animation-iteration-count:1!important;transition-duration:.01ms!important;scroll-behavior:auto!important}
+  #parts{display:none}.js .pop{opacity:1;transform:none}
+}
+</style>
+</head>
+<body>
+
+<!-- OPENING: rubber stamp thumps the name onto the page (plays once, ~2.3s) -->
+<div id="open" role="presentation">
+  <button class="skip" id="skip" type="button">Skip</button>
+  <div class="flash"></div>
+  <div class="sfx2" aria-hidden="true">THUMP!</div>
+  <div class="stampwrap"><div class="big-stamp">Ram Barath M<small>Issue #1</small></div></div>
+</div>
+
+<div id="parts" aria-hidden="true"></div>
+
+<header>
+  <div class="wrap">
+    <span class="issue">Issue #1 · Ram Barath M</span>
+    <button class="toggle" id="theme" type="button" aria-label="Switch between dark and light mode">Lights: <span id="tl">out</span></button>
+  </div>
+</header>
+
+<main>
+<!-- LANDING -->
+<section class="hero" id="top">
+  <div class="wrap">
+    <div>
+      <h1 class="name"><span>Ram</span><span>Barath</span><span class="m">M.</span></h1>
+      <p class="bubble">I build small things in code and learn out loud.</p>
+      <p class="now"><b>Currently…</b> learning to write cleaner code, and breaking my own projects to see how they work.</p>
+      <div class="btns">
+        <a class="btn b1" href="#journey">Explore</a>
+        <a class="btn b2" href="#contact">Say hi</a>
+      </div>
+    </div>
+    <button class="mono" id="mono" type="button" aria-label="Monogram RB. Tap it a few times.">
+      <svg viewBox="0 0 300 300" role="img" aria-hidden="true">
+        <polygon points="150,6 176,52 228,22 226,80 286,82 252,130 296,168 240,190 262,246 204,240 190,296 150,262 110,296 96,240 38,246 60,190 4,168 48,130 14,82 74,80 72,22 124,52" fill="#2f7dff" stroke="#030719" stroke-width="7" stroke-linejoin="round"/>
+        <circle cx="150" cy="150" r="96" fill="#081029" stroke="#3df2ff" stroke-width="6"/>
+        <g fill="#3df2ff" opacity=".45"><circle cx="100" cy="226" r="3"/><circle cx="116" cy="226" r="3"/><circle cx="132" cy="226" r="3"/><circle cx="108" cy="238" r="3"/><circle cx="124" cy="238" r="3"/></g>
+        <text x="152" y="188" text-anchor="middle" font-family="Bangers,Impact,sans-serif" font-size="132" letter-spacing="2" fill="#030719" stroke="#030719" stroke-width="8" transform="translate(6 6)">RB</text>
+        <text x="152" y="188" text-anchor="middle" font-family="Bangers,Impact,sans-serif" font-size="132" letter-spacing="2" fill="#fff">RB</text>
+      </svg>
+    </button>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>Origin story</h2>
+    <div class="about">
+      <div class="panel pop">
+        <span class="cap">Chapter 1</span>
+        <p class="big">I'm in my first year of B.Tech IT, and every week something I thought was magic turns out to be a few lines of logic.</p>
+      </div>
+      <div class="panel pop">
+        <span class="cap">Meanwhile…</span>
+        <!-- EDIT: replace with your real story from your Me-Map answers -->
+        <p>I'm Ram. I grew up curious about how screens do what they do, and joining an IT course finally gave me a way to find out. I'm not an expert at anything yet, and I'd rather say that than pretend.</p>
+        <p>What I do have is the habit of finishing small things. I start with a tiny version, make it work, then make it better. I like the moment a bug finally makes sense.</p>
+        <p>This site is my first issue. More chapters will follow as I learn.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="wrap">
+    <h2>Power levels, honestly</h2>
+    <div class="tiers">
+      <!-- EDIT: move items between boxes to match your real level -->
+      <div class="panel pop"><h3>Comfortable</h3>
+        <ul class="tags"><li>HTML</li><li>CSS</li><li>Python basics</li></ul>
+        <p class="note">I can build with these without looking everything up.</p></div>
+      <div class="panel pop"><h3>Learning</h3>
+        <ul class="tags"><li>JavaScript</li><li>C</li><li>Git &amp; GitHub</li><li>Data structures</li></ul>
+        <p class="note">I use these often and still google a lot.</p></div>
+      <div class="panel pop"><h3>Curious about</h3>
+        <ul class="tags"><li>React</li><li>Databases</li><li>Linux</li></ul>
+        <p class="note">Next on the reading list.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="wrap">
+    <h2>The story so far</h2>
+    <div class="grid">
+      <div class="panel j1 pop"><span class="sfx">MADE</span>
+        <h3 style="font-size:2rem;margin-bottom:8px">What I've built</h3>
+        <ul><li>This portfolio, drawn entirely in CSS and SVG</li><!-- EDIT: add your real projects --><li>Small college programs in Python and C</li></ul></div>
+      <div class="panel j2 pop"><span class="sfx">NOW</span>
+        <h3 style="font-size:2rem;margin-bottom:8px">What I'm learning</h3>
+        <ul><li>JavaScript, by making things move</li><li>How to use Git without fear</li><li>Thinking in data structures</li></ul></div>
+      <div class="panel j3 pop"><span class="sfx">NEXT</span>
+        <h3 style="font-size:2rem;margin-bottom:8px">What I want to build</h3>
+        <ul><li>A study-planner app my classmates actually use</li><li>A game with my own art style</li><li>Something that solves a problem on my campus</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- BEYOND CODE -->
+<section id="beyond">
+  <div class="wrap">
+    <h2>Beyond the code</h2>
+    <!-- EDIT: swap in your real hobbies and fun facts -->
+    <div class="bubbles">
+      <p class="bubble pop">I read comics, which is why this site looks like one.</p>
+      <p class="bubble pop">I'm from Tamil Nadu, and I still think in two languages.</p>
+      <p class="bubble pop">I fix things before I understand them. Then I understand them.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="panel contact pop">
+      <span class="cap">Final panel</span>
+      <p class="big">Got an idea, a project, or advice for a first-year? Say hi.</p>
+      <div class="links">
+        <!-- EDIT: put your real links -->
+        <a href="mailto:you@example.com"><small>Email</small>you@example.com</a>
+        <a href="https://www.linkedin.com/in/your-id" target="_blank" rel="noopener"><small>LinkedIn</small>linkedin.com/in/your-id</a>
+        <a href="https://github.com/your-id" target="_blank" rel="noopener"><small>GitHub</small>github.com/your-id</a>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap">Tip: click or tap any empty spot on the page. It stamps back.</div></footer>
+
+<!-- EASTER EGG: tap the RB monogram 3 times -->
+<div id="egg" role="dialog" aria-label="Secret panel">
+  <div class="panel">
+    <span class="cap">Secret panel!</span>
+    <p class="big">You found it. Most people never tap the monogram.</p>
+    <p style="margin-top:10px;position:relative;z-index:1">Here's the real origin story: I picked this comic theme at 1 a.m. and refused to sleep until the stamp thumped right.</p>
+    <p class="btns"><button class="btn b1" id="eggx" type="button">Close</button></p>
+  </div>
+</div>
+
+<script>
+(function(){
+  var d=document,b=d.body,root=d.documentElement,rm=matchMedia('(prefers-reduced-motion:reduce)').matches;
+  root.classList.add('js');
+
+  /* theme */
+  var tl=d.getElementById('tl');
+  function setTheme(t){root.setAttribute('data-theme',t);tl.textContent=t==='dark'?'out':'on'}
+  var saved=null;try{saved=localStorage.getItem('rb-theme')}catch(e){}
+  setTheme(saved||(matchMedia('(prefers-color-scheme:light)').matches?'light':'dark'));
+  d.getElementById('theme').addEventListener('click',function(e){
+    var t=root.getAttribute('data-theme')==='dark'?'light':'dark';setTheme(t);
+    try{localStorage.setItem('rb-theme',t)}catch(x){}
+    stamp(e.clientX||innerWidth/2,(e.clientY||40)+50,t==='dark'?'NIGHT!':'DAY!');
+  });
+
+  /* opening: once, <2.5s, skippable */
+  var op=d.getElementById('open'),done=false,seen=false;
+  try{seen=sessionStorage.getItem('rb-open')}catch(e){}
+  function end(){if(done)return;done=true;op.classList.add('gone');try{sessionStorage.setItem('rb-open','1')}catch(e){}setTimeout(function(){op.remove()},500)}
+  if(rm||seen){end()}else{
+    setTimeout(function(){b.classList.add('shake')},1150);
+    setTimeout(function(){b.classList.remove('shake')},1500);
+    setTimeout(end,2300);
+  }
+  d.getElementById('skip').addEventListener('click',end);
+
+  /* particles + light trails */
+  var P=d.getElementById('parts');
+  for(var i=0;i<22;i++){
+    var s=d.createElement('i');if(i%4===0)s.className='t';
+    s.style.left=(Math.random()*100)+'%';
+    s.style.animationDuration=(9+Math.random()*14)+'s';
+    s.style.animationDelay=(-Math.random()*20)+'s';
+    if(i%4)s.style.transform='scale('+(.6+Math.random()*1.2)+')';
+    P.appendChild(s);
+  }
+
+  /* panels pop in */
+  var els=d.querySelectorAll('.pop');
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}})},{threshold:.15});
+    els.forEach(function(el){io.observe(el)});
+  }else els.forEach(function(el){el.classList.add('in')});
+
+  /* SIGNATURE MOVE: rubber stamp thumps your name wherever you click */
+  var words=['RAM B.','RAM B. ✓','HELLO!','APPROVED'];
+  function stamp(x,y,txt){
+    var s=d.createElement('div');s.className='ink';s.textContent=txt;
+    s.style.left=x+'px';s.style.top=y+'px';s.style.setProperty('--r',(Math.random()*16-8)+'deg');
+    d.body.appendChild(s);setTimeout(function(){s.remove()},2900);
+    if(!rm){b.classList.add('shake');setTimeout(function(){b.classList.remove('shake')},300)}
+  }
+  var n=0;
+  d.addEventListener('click',function(e){
+    if(e.target.closest('a,button,.panel,.bubble,h1,h2,.mono'))return;
+    stamp(e.clientX,e.clientY,words[n++%words.length]);
+  });
+
+  /* EASTER EGG: tap monogram 3 times */
+  var egg=d.getElementById('egg'),taps=0,tt;
+  d.getElementById('mono').addEventListener('click',function(e){
+    stamp(e.clientX,e.clientY-60,'RB!');
+    taps++;clearTimeout(tt);tt=setTimeout(function(){taps=0},900);
+    if(taps>=3){taps=0;egg.classList.add('show');d.getElementById('eggx').focus()}
+  });
+  function closeEgg(){egg.classList.remove('show')}
+  d.getElementById('eggx').addEventListener('click',closeEgg);
+  egg.addEventListener('click',function(e){if(e.target===egg)closeEgg()});
+  d.addEventListener('keydown',function(e){if(e.key==='Escape')closeEgg()});
+})();
+</script>
+</body>
+</html>
